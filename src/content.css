@@ -1,0 +1,27 @@
+.sbg-blur {
+  filter: blur(6px);
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  transition: filter 0.12s ease;
+}
+
+.sbg-blur:hover {
+  filter: blur(4px);
+}
+
+.sbg-blur:focus-visible {
+  outline: 2px solid #7c9cff;
+  outline-offset: 2px;
+}
+
+.sbg-blur.sbg-revealed {
+  filter: none;
+  user-select: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sbg-blur {
+    transition: none;
+  }
+}
