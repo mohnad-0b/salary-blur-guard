@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Salary Blur Guard">
+  <title>Salary Blur Guard</title>
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A1E29"/>
+      <stop offset="1" stop-color="#0D0F14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.22" cy="0.82" r="0.75">
+      <stop offset="0" stop-color="#7C9CFF" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#7C9CFF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="badge"><rect width="128" height="128" rx="29" ry="29"/></clipPath>
+
+    <!-- the dissolve -->
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4.6"/>
+    </filter>
+    <filter id="edgeGlow" x="-60%" y="-30%" width="220%" height="160%">
+      <feGaussianBlur stdDeviation="2.6"/>
+    </filter>
+
+    <!-- crisp only up to the seam, then hand over to the blurred copy -->
+    <linearGradient id="cut" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0.50" stop-color="#fff"/>
+      <stop offset="0.66" stop-color="#000"/>
+    </linearGradient>
+    <mask id="sharpMask"><rect width="128" height="128" fill="url(#cut)"/></mask>
+
+    <path id="glyph" transform="translate(30.53 93.05) scale(0.04630 -0.04630)" d="M795 -301H633L632 0Q507 5 390.0 28.0Q273 51 162 92V354Q277 295 394.5 263.5Q512 232 633 228V539L600 545Q361 587 260.5 677.0Q160 767 160 936Q160 1115 282.5 1215.5Q405 1316 632 1325L633 1556H795V1329Q895 1321 995.0 1304.0Q1095 1287 1196 1260V1006Q1096 1048 996.0 1071.5Q896 1095 795 1100V813L827 807Q1081 767 1183.5 673.5Q1286 580 1286 397Q1286 213 1164.0 114.5Q1042 16 795 2ZM633 836V1097Q562 1093 519.5 1058.5Q477 1024 477 971Q477 912 516.0 878.5Q555 845 633 836ZM795 510V232Q882 233 925.5 266.0Q969 299 969 365Q969 433 929.0 466.5Q889 500 795 510Z"/>
+  </defs>
+
+  <g clip-path="url(#badge)">
+    <rect width="128" height="128" fill="url(#ink)"/>
+    <rect width="128" height="128" fill="url(#glow)"/>
+
+    <!-- blurred copy underneath, crisp copy masked on top -->
+    <use href="#glyph" fill="#F2F4FA" filter="url(#soft)"/>
+    <use href="#glyph" fill="#F2F4FA" mask="url(#sharpMask)"/>
+
+    <!-- frosted panel + its leading edge -->
+    <rect x="74.9" width="53.1" height="128" fill="#FFFFFF" opacity="0.062"/>
+    <rect x="74.2" width="1.5" height="128" fill="#7C9CFF" filter="url(#edgeGlow)" opacity="0.85"/>
+    <rect x="74.2" width="1.5" height="128" fill="#7C9CFF"/>
+  </g>
+</svg>
